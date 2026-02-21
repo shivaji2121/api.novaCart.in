@@ -1,9 +1,10 @@
 package com.NovaCart.in.dto;
 
 import com.NovaCart.in.utils.CustomerStatus;
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,8 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CustomerDto {
 
 
@@ -29,10 +32,12 @@ public class CustomerDto {
     @NotNull(message = "Status is required")
     private CustomerStatus status;
 
+    @NotNull(message = "Age is required")
     @Min(value = 0, message = "Age cannot be negative")
     @Max(value = 100, message = "Age cannot be greater than 100")
     private Integer age;
 
+    @NotNull(message = "Date of birth is required")
     @Past(message = "Date of birth must be in the past")
     private LocalDate dateOfBirth;
 
