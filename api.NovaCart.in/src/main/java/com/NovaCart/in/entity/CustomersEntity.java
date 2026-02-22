@@ -5,9 +5,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 
 @Entity
 @Data
@@ -18,7 +17,7 @@ import java.time.LocalDateTime;
         @Index(name = "idx_customer_email",columnList = "email")
         }
 )
-public class CustomersEntity {
+public class CustomersEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,23 +40,4 @@ public class CustomersEntity {
     private LocalDate dateOfBirth;
 
 
-    @Column(name = "created_at",updatable = false)
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at")
-    private  LocalDateTime updatedAt;
-
-    @Column(name = "deleted_at")
-    private LocalDateTime deletedAt;
-
-    @PrePersist
-    protected  void onCreate(){
-        this.createdAt=LocalDateTime.now();
-        this.updatedAt=LocalDateTime.now();
-    }
-
-    @PreUpdate
-    protected  void  onUpdate(){
-        this.updatedAt=LocalDateTime.now();
-    }
 }

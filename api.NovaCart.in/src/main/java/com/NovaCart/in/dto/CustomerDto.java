@@ -3,10 +3,7 @@ package com.NovaCart.in.dto;
 import com.NovaCart.in.utils.CustomerStatus;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -15,6 +12,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Getter
+@Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CustomerDto {
 
@@ -29,7 +28,6 @@ public class CustomerDto {
     @Email(message = "Invalid email format")
     private String email;
 
-    @NotNull(message = "Status is required")
     private CustomerStatus status;
 
     @NotNull(message = "Age is required")
@@ -45,5 +43,7 @@ public class CustomerDto {
     private LocalDateTime updatedAt;
     private LocalDateTime deletedAt;
 
-
+    public String getEmail() {
+        return email;
+    }
 }
