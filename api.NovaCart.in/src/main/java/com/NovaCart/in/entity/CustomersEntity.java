@@ -5,7 +5,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -17,7 +20,7 @@ import java.time.LocalDate;
         @Index(name = "idx_customer_email",columnList = "email")
         }
 )
-public class CustomersEntity extends BaseEntity {
+public class CustomersEntity  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,6 +41,13 @@ public class CustomersEntity extends BaseEntity {
 
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
+
+    @UpdateTimestamp
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
+
+    @Column(name = "deleted_at")
+    private  LocalDateTime deletedAt;
 
 
 }

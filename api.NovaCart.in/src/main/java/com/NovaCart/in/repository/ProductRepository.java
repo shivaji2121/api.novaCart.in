@@ -1,6 +1,9 @@
 package com.NovaCart.in.repository;
 
+import com.NovaCart.in.entity.ProductEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public class ProductRepository extends JpaRepository<Produc> {
+@Repository
+public interface ProductRepository extends JpaRepository<ProductEntity,Long> {
 }
