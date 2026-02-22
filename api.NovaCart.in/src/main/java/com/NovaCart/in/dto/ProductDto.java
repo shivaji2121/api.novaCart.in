@@ -2,9 +2,8 @@ package com.NovaCart.in.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.PositiveOrZero;
+
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,12 +19,14 @@ public class ProductDto {
     private Long id;
 
     @NotBlank(message = "Product name is required")
+    @Size(min = 2, max = 100, message = "Name must be between 2 and 100 characters")
     private String name;
 
-    @NotBlank(message="product categoery is required")
+    @NotBlank(message="product category is required")
     private String category;
 
-    @PositiveOrZero(message = "price cannot be negative")
+    @NotNull(message = "product price is required")
+    @Min(value = 0,message = "Product price cannot be  negative")
     private BigDecimal price;
 
     @PositiveOrZero(message = "stock cannot be negative")
