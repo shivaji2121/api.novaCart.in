@@ -26,7 +26,7 @@ public class CustomersEntity  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
 
-    @Column(name = "name",unique = true,nullable = false)
+    @Column(name = "name",nullable = false)
     private String name;
 
     @Column(name = "email",unique = true,nullable = false)
@@ -49,12 +49,4 @@ public class CustomersEntity  {
     @Column(name = "deleted_at")
     private  LocalDateTime deletedAt;
 
-
-    public CustomerStatus getCustomerStatus() {
-        return customerStatus;
-    }
-
-    public void setCustomerStatus(CustomerStatus customerStatus) {
-        this.customerStatus = customerStatus;
-    }
 }

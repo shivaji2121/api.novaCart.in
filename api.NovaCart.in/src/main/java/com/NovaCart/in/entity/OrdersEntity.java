@@ -25,7 +25,7 @@ public class OrdersEntity {
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "customer_id",referencedColumnName = "id")
-    List<CustomersEntity> customer;
+    private List<CustomersEntity> customer;
 
 
 }
