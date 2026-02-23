@@ -35,8 +35,8 @@ public class CustomerServiceImpl implements CustomerService {
                     throw new ResourceAlreadyExistException("Email already exists");
                 });
         CustomersEntity customersEntity=modelMapper.map(customerDto,CustomersEntity.class);
-        if(customersEntity.getStatus()==null){
-            customersEntity.setStatus(CustomerStatus.ACTIVE);
+        if(customersEntity.getCustomerStatus()==null){
+            customersEntity.setCustomerStatus(CustomerStatus.ACTIVE);
         }
         CustomersEntity savedUser=customerRepository.save(customersEntity);
         return modelMapper.map(savedUser,CustomerDto.class);
